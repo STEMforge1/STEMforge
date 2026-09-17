@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <title>Our Tutors - STEMforge</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #3a3a3a;
+            background: linear-gradient(180deg, #d8dbdf 0%, #ced2d7 50%, #d8dbdf 100%);
+            background-attachment: fixed;
+        }
+
+        header {
+            background: linear-gradient(180deg, #d8dbdf 0%, #ced2d7 100%);
+            color: #3a3a3a;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(44, 90, 160, 0.06);
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+        .logo .stem { color: #2c5aa0; }
+        .logo .forge { color: #d68a2e; }
+
+        nav a {
+            color: #3a3a3a;
+            text-decoration: none;
+            margin-left: 2.5rem;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #2c5aa0;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #2c5aa0 0%, #3d6bb8 50%, #4a7bc4 100%);
+            color: #e8e8e8;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #e8e8e8;
+        }
+
+        .tutors-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #2c5aa0;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: #1a3a5a;
+        }
+
+        .tutor-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #2c5aa0;
+            box-shadow: 0 2px 8px rgba(44, 90, 160, 0.1);
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .tutor-photo {
+            flex-shrink: 0;
+            width: 280px;
+            height: auto;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .tutor-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .tutor-content {
+            flex: 1;
+        }
+
+        .tutor-name {
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+            font-size: 2rem;
+            color: #2c5aa0;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .tutor-section-title {
+            font-weight: 600;
+            color: #2c5aa0;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .tutor-section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        .tutor-text {
+            color: #3a3a3a;
+            line-height: 1.8;
+        }
+
+        .tutor-text a {
+            color: #d68a2e;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid #d68a2e;
+            cursor: pointer;
+        }
+
+        .tutor-text a:hover {
+            color: #2c5aa0;
+            border-bottom-color: #2c5aa0;
+        }
+
+        .subjects-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .subject-badge {
+            background: #e8f0f8;
+            color: #2c5aa0;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid #2c5aa0;
+        }
+
+        .subject-badge.mcat {
+            background: #fef3e6;
+            color: #d68a2e;
+            border-color: #d68a2e;
+            font-weight: 600;
+        }
+
+        footer {
+            background: linear-gradient(180deg, #3a4556 0%, #2d3642 100%);
+            color: #e8e8e8;
+            text-align: center;
+            padding: 2.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav a {
+                margin-left: 1rem;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .tutor-card {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tutor-photo {
+                width: 240px;
+            }
+
+            .tutor-name {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="stemforge-template.html" style="display: flex; align-items: center; gap: 0.3rem; text-decoration: none;">
+            <img src="stemforge-logo.png" alt="STEMforge" style="height: 70px; width: auto;">
+            <div class="logo"><span class="stem">STEM</span><span class="forge">forge</span></div>
+        </a>
+        <nav>
+            <a href="stemforge-template.html#about">About</a>
+            <a href="stemforge-template.html#subjects">Subjects</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Our Tutors</h1>
+        <p>Meet the people behind STEMforge</p>
+    </section>
+
+    <div class="tutors-container">
+        <a href="stemforge-template.html" class="back-link">← Back to Home</a>
+
+        <div class="tutor-card">
+            <div class="tutor-photo">
+                <img src="edgar-photo.jpg" alt="Edgar Hotard">
+            </div>
+            
+            <div class="tutor-content">
+                <div class="tutor-name">Edgar Hotard</div>
+                
+                <div class="tutor-section-title">Subjects Tutored</div>
+                <div class="subjects-list">
+                    <span class="subject-badge mcat">MCAT Prep</span>
+                    <span class="subject-badge">Chemistry</span>
+                    <span class="subject-badge">Biochemistry</span>
+                    <span class="subject-badge">Biology</span>
+                    <span class="subject-badge">Psychology</span>
+                    <span class="subject-badge">Sociology</span>
+                </div>
+
+                <div class="tutor-section-title">Background & Credentials</div>
+                <div class="tutor-text">
+                    Master's Degree in Clinical Psychology. 526 MCAT. 5+ years of tutoring experience.
+                </div>
+
+                <div class="tutor-section-title">About</div>
+                <div class="tutor-text">
+                    I'm Edgar. I've been tutoring for over four years, and I work with students on everything from general STEM subjects to intense MCAT prep.
+                    <br><br>
+                    I scored <a href="score.jpg" target="_blank">526</a> on the MCAT mostly by self-studying and building real understanding instead of relying on memorization. I bring that same approach to every tutoring session. Understanding conceptual ideas and reasoning from first principles is what sticks, and leads to a lasting sense of understanding.
+                    <br><br>
+                    If you want to build those reasoning skills and change how you approach STEM, I can help.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+</body>
+</html>
